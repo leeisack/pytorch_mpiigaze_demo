@@ -10,6 +10,7 @@ from omegaconf import DictConfig
 from .common import Face, FacePartsName, Visualizer
 from .gaze_estimator import GazeEstimator
 from .utils import get_3d_face_model
+import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -86,8 +87,11 @@ class Demo:
         self.visualizer.set_image(image.copy())
         faces = self.gaze_estimator.detect_faces(undistorted)
         for face in faces:
+            start = time.time()
             self.gaze_estimator.estimate_gaze(undistorted, face)
-            self._draw_face_bbox(face)
+            end = time.time()
+            fps =  1/(new-end)          
+            self._draw_face_bbox(face, fps)
             self._draw_head_pose(face)
             self._draw_landmarks(face)
             self._draw_face_template_model(face)
@@ -169,10 +173,10 @@ class Demo:
             return False
         return True
 
-    def _draw_face_bbox(self, face: Face) -> None:
+    def _draw_face_bbox(self, face: Face, fps) -> None:
         if not self.show_bbox:
             return
-        self.visualizer.draw_bbox(face.bbox)
+        self.visualizer.draw_bbox(face.bbox, fps)
 
     def _draw_head_pose(self, face: Face) -> None:
         if not self.show_head_pose:
