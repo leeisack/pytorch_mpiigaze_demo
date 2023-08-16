@@ -21,7 +21,7 @@ class Visualizer:
 
     def draw_bbox(self,
                   bbox: np.ndarray,
-                  fps : fps,
+                  fps,
                   lw: int = 5) -> None:
         assert self.image is not None
         assert bbox.shape == (2, 2)
