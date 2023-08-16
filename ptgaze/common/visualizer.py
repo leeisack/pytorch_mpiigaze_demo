@@ -20,13 +20,14 @@ class Visualizer:
         self.image = image
 
     def draw_bbox(self,
-                  bbox: np.ndarray,
+                  bbox: np.ndarray, fps
                   color: Tuple[int, int, int] = (0, 255, 0),
                   lw: int = 5) -> None:
         assert self.image is not None
         assert bbox.shape == (2, 2)
         bbox = np.round(bbox).astype(np.int).tolist()
         cv2.rectangle(self.image, tuple(bbox[0]), tuple(bbox[1]), color, lw)
+        cv2.putText(self.image, fps,tuple(bbox[0]), tuple(bbox[1], cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
 
     @staticmethod
     def _convert_pt(point: np.ndarray) -> Tuple[int, int]:
