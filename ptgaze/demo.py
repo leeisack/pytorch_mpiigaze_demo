@@ -173,10 +173,10 @@ class Demo:
             return False
         return True
 
-    def _draw_face_bbox(self, face: Face) -> None:
+    def _draw_face_bbox(self, face: Face, fps) -> None:
         if not self.show_bbox:
             return
-        self.visualizer.draw_bbox(face.bbox)
+        self.visualizer.draw_bbox(face.bbox, fps)
 
     def _draw_head_pose(self, face: Face) -> None:
         if not self.show_head_pose:
