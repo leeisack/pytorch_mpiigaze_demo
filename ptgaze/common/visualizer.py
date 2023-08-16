@@ -22,7 +22,7 @@ class Visualizer:
     def draw_bbox(self,
                   bbox: np.ndarray,
                   color: Tuple[int, int, int] = (0, 255, 0),
-                  lw: int = 1) -> None:
+                  lw: int = 4) -> None:
         assert self.image is not None
         assert bbox.shape == (2, 2)
         bbox = np.round(bbox).astype(np.int).tolist()
