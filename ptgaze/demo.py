@@ -87,8 +87,11 @@ class Demo:
         self.visualizer.set_image(image.copy())
         faces = self.gaze_estimator.detect_faces(undistorted)
         for face in faces:
+            start = time.time()
             self.gaze_estimator.estimate_gaze(undistorted, face)
-            self._draw_face_bbox(face)
+            end = time.time()
+            fps = 1/ end - start
+            self._draw_face_bbox(face, fps)
             self._draw_head_pose(face)
             self._draw_landmarks(face)
             self._draw_face_template_model(face)
