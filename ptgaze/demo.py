@@ -90,7 +90,7 @@ class Demo:
             start = time.time()
             self.gaze_estimator.estimate_gaze(undistorted, face)
             end = time.time()
-            fps = 1/ end - start
+            fps = 1/ (end - start)
             self._draw_face_bbox(face, fps)
             self._draw_head_pose(face)
             self._draw_landmarks(face)
