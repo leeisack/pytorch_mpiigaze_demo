@@ -22,7 +22,7 @@ class Visualizer:
     def draw_bbox(self,
                   bbox: np.ndarray,
                   color: Tuple[int, int, int] = (0, 255, 0),
-                  lw: int = 4) -> None:
+                  lw: int = 5) -> None:
         assert self.image is not None
         assert bbox.shape == (2, 2)
         bbox = np.round(bbox).astype(np.int).tolist()
@@ -62,7 +62,7 @@ class Visualizer:
         points2d = self._camera.project_points(points3d)
         pt0 = self._convert_pt(points2d[0])
         pt1 = self._convert_pt(points2d[1])
-        cv2.line(self.image, pt0, pt1, color, lw, cv2.LINE_AA)
+        cv2.line(self.image, pt0, pt1, color, 10, cv2.LINE_AA)
 
     def draw_model_axes(self, face: Face, length: float, lw: int = 2) -> None:
         assert self.image is not None
