@@ -63,7 +63,7 @@ class Visualizer:
         pt0 = self._convert_pt(points2d[0])
         pt1 = self._convert_pt(points2d[1])
         #cv2.line(self.image, pt0, pt1, color, 10, cv2.LINE_AA)
-        cv2.arrowedLine(self.image, pt0, pt1, color, 10, cv2.LINE_AA, tipLength=3)                 
+        cv2.arrowedLine(self.image, pt0, pt1, color, 10, cv2.LINE_AA, tipLength=0.3)                 
 
     def draw_model_axes(self, face: Face, length: float, lw: int = 2) -> None:
         assert self.image is not None
