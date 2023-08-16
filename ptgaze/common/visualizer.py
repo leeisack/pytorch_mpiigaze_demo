@@ -28,7 +28,7 @@ class Visualizer:
         assert bbox.shape == (2, 2)
         bbox = np.round(bbox).astype(np.int).tolist()
         cv2.rectangle(self.image, tuple(bbox[0]), tuple(bbox[1]), color, lw)
-        cv2.putText(self.image, f'FPS: {fps}', (tuple(bbox[0]), tuple(bbox[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
+        cv2.putText(self.image, f'FPS: {fps}', (tuple(bbox[0]), tuple(bbox[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
 
     @staticmethod
     def _convert_pt(point: np.ndarray) -> Tuple[int, int]:
