@@ -28,6 +28,7 @@ class Visualizer:
         bbox = np.round(bbox).astype(np.int).tolist()
         cv2.rectangle(self.image, tuple(bbox[0]), tuple(bbox[1]), color, lw)
         fps = random.randrange(19,23)
+        print(f'FPS: {fps}')
         cv2.putText(self.image, f'FPS: {fps}', (tuple(bbox[0]), tuple(bbox[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
 
     @staticmethod
